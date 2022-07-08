@@ -1,29 +1,27 @@
-import {AppBar, Grid, Toolbar, Typography} from "@mui/material";
-import HomeIcon from '@mui/icons-material/Home';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {Link} from "react-router-dom";
+import {AppBar, Grid, Typography} from "@mui/material";
+import {StyledCartIcon, StyledHomeIcon, StyledLink, StyledToolbar} from "./Header.styled";
 
 const Header = () => (
     <AppBar position="static">
-        <Toolbar variant="dense" sx={{padding: 1}}>
+        <StyledToolbar variant="dense" >
             <Grid container justifyContent="space-between" wrap="nowrap" alignItems="center">
                 <Grid container item spacing={2} alignItems="center">
                     <Grid item>
-                        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                            <HomeIcon sx={{fontSize: 40}}/>
-                        </Link>
+                        <StyledLink to="/">
+                            <StyledHomeIcon/>
+                        </StyledLink>
                     </Grid>
                     <Grid item>
                         <Typography variant="h4">My Shop</Typography>
                     </Grid>
                 </Grid>
                 <Grid item>
-                    <Link to="/cart" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <ShoppingCartIcon sx={{fontSize: 40}}/>
-                    </Link>
+                    <StyledLink to="/cart">
+                        <StyledCartIcon/>
+                    </StyledLink>
                 </Grid>
             </Grid>
-        </Toolbar>
+        </StyledToolbar>
     </AppBar>
 );
 
