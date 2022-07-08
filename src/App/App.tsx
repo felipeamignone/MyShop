@@ -1,9 +1,10 @@
+import PagesRoutes from "../routes";
+
 function App() {
     return (
         <div className="App">
-            Hello Keldey
-        </div>
-    );
+            <PagesRoutes/>
+        </div>);
 }
 
 export default App;
