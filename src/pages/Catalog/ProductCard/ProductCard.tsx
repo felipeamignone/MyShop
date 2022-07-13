@@ -1,17 +1,17 @@
 import {IProduct} from "../types";
-import {Box, Grid, Typography} from "@mui/material";
-import {CardContainer, CardPaper} from "./ProductCard.styles";
+import {Grid, Typography} from "@mui/material";
+import {CardContainer, CardPaper, ImageBox} from "./ProductCard.styles";
 
 interface Props {
     product: IProduct
 }
 
 const ProductCard = ({product}: Props) => (
-    <Grid container>
+    <Grid container justifyContent="center">
         <CardPaper elevation={3}>
             <CardContainer container direction="column" spacing={2} alignItems="center" justifyContent="space-between">
                 <Grid item>
-                    <Box sx={{width: '200px', height: '200px', backgroundColor: '#f5f5f5'}}/>
+                    <ImageBox/>
                 </Grid>
                 <Grid container item direction="column" spacing={2} alignItems="center">
                     <Grid item>
