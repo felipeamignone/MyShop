@@ -22,11 +22,12 @@ jobs:
         uses: github/codeql-action/autobuild@v2
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
-        
-      - name: Generate coverage report
-        run: |
+      - name: NPM install
+        run : |
+            npm install --save jest-coverage-badges
             npm install
-            npm run test:badges
+      - name: Generate coverage report
+        run: npm run test:badges
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
