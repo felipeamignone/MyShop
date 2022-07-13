@@ -20,14 +20,14 @@ jobs:
             languages: ${{ matrix.language }}
       - name: Autobuild
         uses: github/codeql-action/autobuild@v2
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+#       - name: Perform CodeQL Analysis
+#         uses: github/codeql-action/analyze@v2
       - name: NPM install
         run : |
             npm install --save jest-coverage-badges
             npm install
       - name: Generate coverage report
-        run: npm run test:badges
+        run: npm run test:coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
