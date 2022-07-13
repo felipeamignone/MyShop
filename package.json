@@ -31,7 +31,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "npm test -- --coverage --watchAll=false",
-    "test:badges": "npm run test:coverage  && jest-coverage-badges",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
