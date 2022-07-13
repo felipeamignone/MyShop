@@ -14,7 +14,9 @@ jobs:
       steps:
       
       - name: Generate coverage report
-        run: npm run test:badges
+        run: |
+            npm install
+            npm run test:badges
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
