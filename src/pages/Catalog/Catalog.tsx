@@ -4,7 +4,7 @@ import {ProductMock} from "../../mocks/ProductMock";
 import {PageContainer} from "./ProductCard/ProductCard.styles";
 
 const Catalog = () => (
-    <PageContainer container xs={12} direction="column">
+    <PageContainer container direction="column" spacing={3}>
         <Grid item>
             select ordenacao
         </Grid>

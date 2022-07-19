@@ -6,6 +6,11 @@ interface Props {
     product: IProduct
 }
 
+const formatPriceToLocaleString = (price: number) => price.toLocaleString('pt-br', {
+    style: 'currency',
+    currency: 'BRL'
+})
+
 const ProductCard = ({product}: Props) => (
     <Grid container justifyContent="center">
         <CardPaper elevation={3}>
@@ -18,7 +23,9 @@ const ProductCard = ({product}: Props) => (
                         <Typography variant="body1">{product.name}</Typography>
                     </Grid>
                     <Grid item>
-                        <Typography variant="h6">{product.price} R$</Typography>
+                        <Typography variant="h6">
+                            {formatPriceToLocaleString(product.price)}
+                        </Typography>
                     </Grid>
                 </Grid>
                 <Grid item>
