@@ -17,7 +17,9 @@ const ProductCard = ({product}: Props) => (
         <CardPaper elevation={3}>
             <CardContainer container direction="column" spacing={2} alignItems="center" justifyContent="space-between">
                 <Grid item>
-                    <ImageBox/>
+                    <ImageBox>
+                        <img src={product.imgSrc} alt="product-img"/>
+                    </ImageBox>
                 </Grid>
                 <Grid container item direction="column" spacing={2} alignItems="center">
                     <Grid item>
