@@ -25,17 +25,17 @@ const CardButtons = ({availableAmount, selectedAmount}: Props) => {
     return (
         <Grid container wrap="nowrap" justifyContent="center" alignItems="baseline" spacing={2}>
             <Grid item>
-                <IconButton onClick={() => handleCurrentAmount('rmv')}>
+                <IconButton onClick={() => handleCurrentAmount('rmv')} aria-label="button-rmv">
                     <StyledRemoveIcon color="secondary"/>
                 </IconButton>
             </Grid>
             <Grid item>
-                <Typography variant="body1">
+                <Typography variant="body1" data-testid="current-amount">
                     {currentAmount}
                 </Typography>
             </Grid>
             <Grid item>
-                <IconButton size="large" onClick={() => handleCurrentAmount('add')}>
+                <IconButton size="large" onClick={() => handleCurrentAmount('add')} aria-label="button-add">
                     <StyledAddIcon color="primary"/>
                 </IconButton>
             </Grid>
