@@ -31,11 +31,8 @@ const ProductCard = ({product}: Props) => (
                 </Grid>
                 <Grid container item>
                     <CardButtons
-                        maxAmount={product.availableAmount}
-                        onAddClick={() => {
-                        }}
-                        onRemoveClick={() => {
-                        }}
+                        availableAmount={product.availableAmount}
+                        selectedAmount={product.selectedAmount}
                     />
                 </Grid>
             </CardContainer>
