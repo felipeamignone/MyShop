@@ -1,6 +1,7 @@
-import {IProduct} from "../types";
+import {IProduct} from "../../types";
 import {Grid, Typography} from "@mui/material";
 import {CardContainer, CardPaper, ImageBox} from "./ProductCard.styles";
+import CardButtons from "../CardButtons";
 
 interface Props {
     product: IProduct
@@ -28,8 +29,14 @@ const ProductCard = ({product}: Props) => (
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid item>
-                    action buttons
+                <Grid container item>
+                    <CardButtons
+                        maxAmount={product.availableAmount}
+                        onAddClick={() => {
+                        }}
+                        onRemoveClick={() => {
+                        }}
+                    />
                 </Grid>
             </CardContainer>
         </CardPaper>
