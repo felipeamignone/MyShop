@@ -4,24 +4,17 @@ import {render, screen} from "@testing-library/react";
 
 const renderHeader = () => render(<Router><Header/></Router>);
 describe("Header", () => {
-    it('render Header title', () => {
+    it('render elements correctly', () => {
         renderHeader();
 
         const title = screen.getByRole('heading', {
             name: /my shop/i
         });
-        expect(title).toBeInTheDocument();
-    });
-    it('render Home icon', () => {
-        renderHeader();
 
         const homeIcon = screen.getByTestId(/homeicon/i);
-        expect(homeIcon).toBeInTheDocument();
-    });
-    it('render Cart icon', () => {
-        renderHeader();
-
         const cartIcon = screen.getByTestId(/shoppingcarticon/i);
+        expect(title).toBeInTheDocument();
+        expect(homeIcon).toBeInTheDocument();
         expect(cartIcon).toBeInTheDocument();
     });
 })

@@ -3,6 +3,7 @@ import {StyledAddIcon, StyledRemoveIcon} from "./CardButtons.styles";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import ContainedButton from "../../../../components/ContainedButton/ContainedButton";
 
 interface Props {
     selectedAmount: number,
@@ -21,6 +22,16 @@ const CardButtons = ({availableAmount, selectedAmount}: Props) => {
             setCurrentAmount(currentAmount - 1)
         }
     }
+
+    if (currentAmount === 0) return (
+        <Grid container wrap="nowrap" justifyContent="center" alignItems="baseline" spacing={2}>
+            <Grid item>
+                <ContainedButton onClick={() => handleCurrentAmount('add')} aria-label="button-add">
+                    ADICIONAR AO CARRINHO
+                </ContainedButton>
+            </Grid>
+        </Grid>
+    )
 
     return (
         <Grid container wrap="nowrap" justifyContent="center" alignItems="baseline" spacing={2}>
