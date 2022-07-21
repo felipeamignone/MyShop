@@ -1,9 +1,10 @@
 import {useState} from "react";
 import {StyledAddIcon, StyledRemoveIcon} from "./CardButtons.styles";
+import ContainedButton from "../../../../components/ContainedButton/ContainedButton";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import ContainedButton from "../../../../components/ContainedButton/ContainedButton";
+import Tooltip from "@mui/material/Tooltip";
 
 interface Props {
     selectedAmount: number,
@@ -36,9 +37,11 @@ const CardButtons = ({availableAmount, selectedAmount}: Props) => {
     return (
         <Grid container wrap="nowrap" justifyContent="center" alignItems="baseline" spacing={2}>
             <Grid item>
-                <IconButton onClick={() => handleCurrentAmount('rmv')} aria-label="button-rmv">
-                    <StyledRemoveIcon color="secondary"/>
-                </IconButton>
+                <Tooltip title="Remover item do carrinho">
+                    <IconButton onClick={() => handleCurrentAmount('rmv')} aria-label="button-rmv">
+                        <StyledRemoveIcon color="secondary"/>
+                    </IconButton>
+                </Tooltip>
             </Grid>
             <Grid item>
                 <Typography variant="body1" data-testid="current-amount">
@@ -46,9 +49,16 @@ const CardButtons = ({availableAmount, selectedAmount}: Props) => {
                 </Typography>
             </Grid>
             <Grid item>
-                <IconButton size="large" onClick={() => handleCurrentAmount('add')} aria-label="button-add">
-                    <StyledAddIcon color="primary"/>
-                </IconButton>
+                <Tooltip
+                    title={currentAmount === availableAmount ? 'Sem produtos restantes no estoque' : 'Adicionar item ao carrinho'}>
+                    <IconButton
+                        size="large"
+                        onClick={() => handleCurrentAmount('add')}
+                        aria-label="button-add"
+                    >
+                        <StyledAddIcon color="primary"/>
+                    </IconButton>
+                </Tooltip>
             </Grid>
         </Grid>
     )
