@@ -1,7 +1,8 @@
 import {IProduct} from "../../types";
-import {Grid, Typography} from "@mui/material";
 import {CardContainer, CardPaper, ImageBox} from "./ProductCard.styles";
 import CardButtons from "../CardButtons";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 
 interface Props {
     product: IProduct

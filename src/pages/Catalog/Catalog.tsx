@@ -1,7 +1,7 @@
-import {Grid} from "@mui/material";
 import ProductCard from "./components/ProductCard";
 import {ProductMock} from "../../mocks/ProductMock";
 import {PageContainer} from "./components/ProductCard/ProductCard.styles";
+import Grid from "@mui/material/Grid";
 
 const Catalog = () => (
     <PageContainer container direction="column" spacing={3}>
