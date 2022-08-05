@@ -70,21 +70,22 @@ describe("CardButtons", () => {
 
         await waitFor(() => expect(currentAmount).toHaveTextContent(/1/i));
     })
-    it('decrement current amount when clicks on rmv button and current is equal to 0', async () => {
-        renderButtonsWith({selectedAmount: 1});
+    it('decrement current amount when clicks on rmv button and dismount button when amount is equal 0',
+        async () => {
+            renderButtonsWith({selectedAmount: 2});
 
-        const rmvButton = screen.getByRole('button', {
-            name: 'button-rmv'
-        });
+            const rmvButton = screen.getByRole('button', {
+                name: 'button-rmv'
+            });
 
-        await userEvent.click(rmvButton);
+            await userEvent.click(rmvButton);
 
-        const currentAmount = screen.getByTestId('current-amount');
+            const currentAmount = screen.getByTestId('current-amount');
 
-        await waitFor(() => expect(currentAmount).toHaveTextContent(/0/i));
+            await waitFor(() => expect(currentAmount).toHaveTextContent(/1/i));
 
-        await userEvent.click(rmvButton);
+            await userEvent.click(rmvButton);
 
-        await waitFor(() => expect(currentAmount).not.toHaveTextContent(/-1/i));
-    })
+            await waitFor(() => expect(currentAmount).not.toBeInTheDocument());
+        })
 })
