@@ -4,5 +4,4 @@ export interface IProduct {
     imgSrc: string,
     price: number,
     availableAmount: number,
-    selectedAmount: number,
 };

@@ -35,7 +35,7 @@ const ProductCard = ({product}: Props) => (
                 <Grid container item>
                     <CardButtons
                         availableAmount={product.availableAmount}
-                        selectedAmount={product.selectedAmount}
+                        product={{requestAmount: 0, id: product.id, price: product.price}}
                     />
                 </Grid>
             </CardContainer>
