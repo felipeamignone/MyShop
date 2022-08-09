@@ -2,6 +2,8 @@ import ProductCard from "./components/ProductCard";
 import {PageContainer} from "./components/ProductCard/ProductCard.styles";
 import Grid from "@mui/material/Grid";
 import {useCatalog} from "../../contexts/catalog/useCatalog";
+import {CartProvider} from "../../contexts/cart/context";
+import {useCart} from "../../contexts/cart/useCart";
 
 const Catalog = () => {
     const {state: {products}} = useCatalog();
@@ -22,4 +24,9 @@ const Catalog = () => {
     )
 };
 
-export default Catalog;
+const CatalogWrapper = () => {
+    const value = useCart();
+    return (<CartProvider value={value}><Catalog/></CartProvider>)
+}
+
+export default CatalogWrapper;

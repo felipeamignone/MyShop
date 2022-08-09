@@ -4,7 +4,7 @@ import CardButtons from "../CardButtons";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-import {useCart} from '../../../../contexts/cart/useCart'
+import {useCartContext} from "../../../../contexts/cart/context";
 
 interface Props {
     product: IProduct
@@ -16,7 +16,7 @@ const formatPriceToLocaleString = (price: number) => price.toLocaleString('pt-br
 })
 
 const ProductCard = ({product}: Props) => {
-    const {state, addProduct, rmvProduct} = useCart();
+    const {state, addProduct, rmvProduct} = useCartContext();
 
     const handleAddProduct = () => {
         addProduct(product.id)
