@@ -7,7 +7,6 @@ export const ProductMock: IProduct[] = [
         price: 14.99,
         imgSrc: '',
         availableAmount: 15,
-        selectedAmount: 0,
     },
     {
         id: 2,
@@ -15,7 +14,6 @@ export const ProductMock: IProduct[] = [
         price: 10.75,
         imgSrc: '',
         availableAmount: 7,
-        selectedAmount: 0,
     },
     {
         id: 3,
@@ -23,7 +21,6 @@ export const ProductMock: IProduct[] = [
         price: 5.13,
         imgSrc: '',
         availableAmount: 23,
-        selectedAmount: 0,
     },
     {
         id: 4,
@@ -31,7 +28,6 @@ export const ProductMock: IProduct[] = [
         price: 7.23,
         imgSrc: '',
         availableAmount: 12,
-        selectedAmount: 0,
     },
     {
         id: 5,
@@ -39,7 +35,6 @@ export const ProductMock: IProduct[] = [
         price: 54.10,
         imgSrc: '',
         availableAmount: 4,
-        selectedAmount: 0,
     },
     {
         id: 6,
@@ -47,7 +42,6 @@ export const ProductMock: IProduct[] = [
         price: 35.13,
         imgSrc: '',
         availableAmount: 23,
-        selectedAmount: 0,
     },
 
 ]

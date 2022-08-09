@@ -1,7 +1,8 @@
-import {styled, Toolbar} from "@mui/material";
+import {Link} from "react-router-dom";
+import {styled} from "@mui/material";
+import Toolbar from '@mui/material/Toolbar';
 import HomeIcon from '@mui/icons-material/Home';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {Link} from "react-router-dom";
 
 export const StyledLink = styled(Link)({
     textDecoration: 'none',

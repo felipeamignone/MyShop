@@ -1,9 +1,11 @@
-import {AppBar, Grid, Typography} from "@mui/material";
 import {StyledCartIcon, StyledHomeIcon, StyledLink, StyledToolbar} from "./Header.styled";
+import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
 
 const Header = () => (
     <AppBar position="static">
-        <StyledToolbar variant="dense" >
+        <StyledToolbar variant="dense">
             <Grid container justifyContent="space-between" wrap="nowrap" alignItems="center">
                 <Grid container item spacing={2} alignItems="center">
                     <Grid item>

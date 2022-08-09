@@ -1,4 +1,7 @@
-import {Box, Grid, Paper, styled} from "@mui/material";
+import {styled} from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 
 export const PageContainer = styled(Grid)({
     padding: '34px 68px',
