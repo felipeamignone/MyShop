@@ -1,7 +1,6 @@
 export interface IProductsInCart {
     id: number;
     requestAmount: number;
-    price: number | null;
 }
 
 interface ITicketPaymentMethod {

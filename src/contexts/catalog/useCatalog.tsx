@@ -13,7 +13,7 @@ const initialState: ICatalogState = {
     products: ProductMock
 }
 
-const useCatalog = () => {
+export const useCatalog = () => {
     const [state, setState] = useState<ICatalogState>(initialState);
 
     const handleState = (changes: Partial<ICatalogState>) => setState({...state, ...changes});
@@ -24,10 +24,3 @@ const useCatalog = () => {
         handleState,
     })
 }
-
-const wrapper = {
-    initialState,
-    useCatalog,
-}
-
-export default wrapper
