@@ -1,6 +1,8 @@
 import {render, screen} from "@testing-library/react";
 import ProductCard from "../ProductCard";
 import {IProduct} from "../../../types";
+import {useCart} from "../../../../../contexts/cart/useCart";
+import {CartProvider} from "../../../../../contexts/cart/context";
 
 interface Props {
     product: IProduct
@@ -13,11 +15,20 @@ const defaultProps: Props = {
         price: 14.99,
         imgSrc: '',
         availableAmount: 15,
-        selectedAmount: 0,
     }
 }
 
-const renderCard = (props?: Partial<Props>) => render(<ProductCard {...defaultProps} {...props}/>);
+const ProductCardWrapper = (props?: Partial<Props>) => {
+    const value = useCart();
+    return (<CartProvider value={value}>
+        <ProductCard
+            {...defaultProps}
+            {...props}
+        />
+    </CartProvider>)
+}
+
+const renderCard = (props?: Partial<Props>) => render(<ProductCardWrapper {...defaultProps} {...props}/>);
 
 describe("ProductCard", () => {
     it('render elements correctly', () => {
