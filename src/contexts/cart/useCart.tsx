@@ -13,7 +13,7 @@ const initialState: ICartState = {
     },
     address: {
         streetName: '',
-        residenceNumber: '',
+        residenceNumber: null,
         residenceComplement: '',
         city: '',
         uf: '',
