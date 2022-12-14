@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ICartState } from "./types";
-import { useCatalog } from "../catalog/useCatalog";
+import { IProduct } from "../../pages/Catalog/types";
 
 const initialState: ICartState = {
   products: [],
@@ -28,15 +28,11 @@ const initialState: ICartState = {
 export const useCart = () => {
   const [state, setState] = useState<ICartState>(initialState);
 
-  const {
-    state: { products },
-  } = useCatalog();
-
   const handleState = (changes: Partial<ICartState>) =>
     setState((prevState) => ({ ...prevState, ...changes }));
 
-  const addProduct = (productId: number) => {
-    const catalogProduct = products.find(
+  const addProduct = (productId: number, catalogProducts: IProduct[]) => {
+    const catalogProduct = catalogProducts.find(
       (catalogProduct) => catalogProduct.id === productId
     );
     const cartProduct = state.products.find(
@@ -46,7 +42,7 @@ export const useCart = () => {
     if (catalogProduct) {
       if (!cartProduct) {
         handleState({
-          products: [...state.products, { id: productId, requestAmount: 1 }],
+          products: [...state.products, { ...catalogProduct, requestAmount: 1 }],
         });
       } else if (cartProduct.requestAmount < catalogProduct.availableAmount) {
         let newProducts = [...state.products];
@@ -78,7 +74,7 @@ export const useCart = () => {
           (cartProduct) => cartProduct.id === productId
         );
 
-        newProducts.splice(productIndexInCart);
+        newProducts.splice(productIndexInCart, 1);
 
         handleState({ products: [...newProducts] });
       } else {
@@ -98,10 +94,29 @@ export const useCart = () => {
     }
   };
 
+  const removeAllProductAmount = (productId: number) => {
+    const cartProduct = state.products.find(
+      (cartProduct) => cartProduct.id === productId
+    );
+
+    if (cartProduct) {
+      let newProducts = [...state.products];
+
+      const productIndexInCart = state.products.findIndex(
+        (cartProduct) => cartProduct.id === productId
+      );
+
+      newProducts.splice(productIndexInCart, 1);
+
+      handleState({ products: [...newProducts] });
+    }
+  }
+
   return {
     state,
     handleState,
     addProduct,
     rmvProduct,
+    removeAllProductAmount,
   };
 };

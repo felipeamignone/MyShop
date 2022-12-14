@@ -43,5 +43,33 @@ export const ProductMock: IProduct[] = [
         imgSrc: '',
         availableAmount: 23,
     },
+    {
+        id: 7,
+        name: 'Product 7',
+        price: 35.13,
+        imgSrc: '',
+        availableAmount: 23,
+    },
+    {
+        id: 8,
+        name: 'Product 8',
+        price: 35.13,
+        imgSrc: '',
+        availableAmount: 23,
+    },
+    {
+        id: 9,
+        name: 'Product 9',
+        price: 35.13,
+        imgSrc: '',
+        availableAmount: 23,
+    },
+    {
+        id: 10,
+        name: 'Product 10',
+        price: 35.13,
+        imgSrc: '',
+        availableAmount: 23,
+    },
 
 ]
