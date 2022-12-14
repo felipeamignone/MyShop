@@ -33,8 +33,13 @@ const ProductCard = ({ product }: Props) => {
     return (
         <Grid container justifyContent="center">
             <CardPaper elevation={3}>
-                <CardContainer container direction="column" spacing={2} alignItems="center"
-                    justifyContent="space-between">
+                <CardContainer
+                    container
+                    direction="column"
+                    spacing={2} alignItems="center"
+                    justifyContent="space-between"
+                    flexWrap="nowrap"
+                >
                     <Grid item>
                         <ImageBox>
                             <img src={product.imgSrc} alt="product-img" />
