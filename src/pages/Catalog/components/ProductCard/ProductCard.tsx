@@ -1,10 +1,11 @@
-import {IProduct} from "../../types";
-import {CardContainer, CardPaper, ImageBox} from "./ProductCard.styles";
+import { IProduct } from "../../types";
+import { CardContainer, CardPaper, ImageBox } from "./ProductCard.styles";
 import CardButtons from "../CardButtons";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-import {useCartContext} from "../../../../contexts/cart/context";
+import { useCartContext } from "../../../../contexts/cart/context";
+import { useCatalogContext } from "../../../../contexts/catalog/context";
 
 interface Props {
     product: IProduct
@@ -15,11 +16,12 @@ const formatPriceToLocaleString = (price: number) => price.toLocaleString('pt-br
     currency: 'BRL'
 })
 
-const ProductCard = ({product}: Props) => {
-    const {state, addProduct, rmvProduct} = useCartContext();
+const ProductCard = ({ product }: Props) => {
+    const { state, addProduct, rmvProduct } = useCartContext();
+    const { state: { products } } = useCatalogContext();
 
     const handleAddProduct = () => {
-        addProduct(product.id)
+        addProduct(product.id, products);
     }
 
     const handleRmvProduct = () => {
@@ -31,11 +33,16 @@ const ProductCard = ({product}: Props) => {
     return (
         <Grid container justifyContent="center">
             <CardPaper elevation={3}>
-                <CardContainer container direction="column" spacing={2} alignItems="center"
-                               justifyContent="space-between">
+                <CardContainer
+                    container
+                    direction="column"
+                    spacing={2} alignItems="center"
+                    justifyContent="space-between"
+                    flexWrap="nowrap"
+                >
                     <Grid item>
                         <ImageBox>
-                            <img src={product.imgSrc} alt="product-img"/>
+                            <img src={product.imgSrc} alt="product-img" />
                         </ImageBox>
                     </Grid>
                     <Grid container item direction="column" spacing={2} alignItems="center">

@@ -1,10 +1,10 @@
 import ProductCard from "./components/ProductCard";
 import { PageContainer } from "./components/ProductCard/ProductCard.styles";
 import Grid from "@mui/material/Grid";
-import { useCatalog } from "../../contexts/catalog/useCatalog";
+import { useCatalogContext } from "../../contexts/catalog/context";
 
 const Catalog = () => {
-    const { state: { products } } = useCatalog();
+    const { state: { products } } = useCatalogContext();
 
     return (
         <PageContainer container direction="column" spacing={3}>

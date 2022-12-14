@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ICartState } from "./types";
-import { useCatalog } from "../catalog/useCatalog";
+import { IProduct } from "../../pages/Catalog/types";
 
 const initialState: ICartState = {
   products: [],
@@ -28,15 +28,11 @@ const initialState: ICartState = {
 export const useCart = () => {
   const [state, setState] = useState<ICartState>(initialState);
 
-  const {
-    state: { products },
-  } = useCatalog();
-
   const handleState = (changes: Partial<ICartState>) =>
     setState((prevState) => ({ ...prevState, ...changes }));
 
-  const addProduct = (productId: number) => {
-    const catalogProduct = products.find(
+  const addProduct = (productId: number, catalogProducts: IProduct[]) => {
+    const catalogProduct = catalogProducts.find(
       (catalogProduct) => catalogProduct.id === productId
     );
     const cartProduct = state.products.find(

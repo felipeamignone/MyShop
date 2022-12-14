@@ -1,4 +1,4 @@
-import {StyledAddIcon, StyledRemoveIcon} from "./CardButtons.styles";
+import { StyledAddIcon, StyledRemoveIcon } from "./CardButtons.styles";
 import ContainedButton from "../../../../components/ContainedButton/ContainedButton";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
@@ -12,7 +12,7 @@ interface Props {
     rmvProduct: () => void,
 }
 
-const CardButtons = ({currentAmount, availableAmount, addProduct, rmvProduct}: Props) => {
+const CardButtons = ({ currentAmount, availableAmount, addProduct, rmvProduct }: Props) => {
     const handleCurrentAmount = (typeAction: 'add' | 'rmv') => {
         if (typeAction === 'add') {
             addProduct();
@@ -36,7 +36,7 @@ const CardButtons = ({currentAmount, availableAmount, addProduct, rmvProduct}: P
             <Grid item>
                 <Tooltip title="Remover item do carrinho">
                     <IconButton onClick={() => handleCurrentAmount('rmv')} aria-label="button-rmv">
-                        <StyledRemoveIcon color="secondary"/>
+                        <StyledRemoveIcon color="secondary" />
                     </IconButton>
                 </Tooltip>
             </Grid>
@@ -48,13 +48,16 @@ const CardButtons = ({currentAmount, availableAmount, addProduct, rmvProduct}: P
             <Grid item>
                 <Tooltip
                     title={currentAmount === availableAmount ? 'Sem produtos restantes no estoque' : 'Adicionar item ao carrinho'}>
-                    <IconButton
-                        size="large"
-                        onClick={() => handleCurrentAmount('add')}
-                        aria-label="button-add"
-                    >
-                        <StyledAddIcon color="primary"/>
-                    </IconButton>
+                    <span>
+                        <IconButton
+                            size="large"
+                            onClick={() => handleCurrentAmount('add')}
+                            aria-label="button-add"
+                            disabled={currentAmount === availableAmount}
+                        >
+                            <StyledAddIcon color="primary" />
+                        </IconButton>
+                    </span>
                 </Tooltip>
             </Grid>
         </Grid>
