@@ -1,5 +1,6 @@
-export interface IProductsInCart {
-    id: number;
+import { IProduct } from "../../pages/Catalog/types";
+
+export interface IProductsInCart extends IProduct {
     requestAmount: number;
 }
 
