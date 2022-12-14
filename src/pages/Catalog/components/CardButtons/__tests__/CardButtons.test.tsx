@@ -1,19 +1,38 @@
 import {render, screen, waitFor} from "@testing-library/react";
 import CardButtons from "../CardButtons";
 import userEvent from "@testing-library/user-event";
+import {useCart} from "../../../../../contexts/cart/useCart";
+import {CartProvider, useCartContext} from "../../../../../contexts/cart/context";
 
 interface Props {
-    selectedAmount: number,
+    currentAmount: number,
     availableAmount: number,
+    addProduct: () => void,
+    rmvProduct: () => void,
 }
 
-const defaultProps: Props = {selectedAmount: 0, availableAmount: 10};
+const defaultProps: Props = {
+    currentAmount: 0,
+    availableAmount: 10,
+    addProduct: jest.fn(),
+    rmvProduct: jest.fn()
+};
 
-const renderButtonsWith = (props?: Partial<Props>) => render(<CardButtons {...defaultProps} {...props}/>);
+const CardButtonsWrapper = (props?: Partial<Props>) => {
+    const value = useCart();
+    return (<CartProvider value={value}>
+        <CardButtons
+            {...defaultProps}
+            {...props}
+        />
+    </CartProvider>)
+}
+
+const renderButtonsWith = (props?: Partial<Props>) => render(<CardButtonsWrapper {...props}/>);
 
 describe("CardButtons", () => {
     it('render elements correctly', () => {
-        renderButtonsWith({selectedAmount: 10});
+        renderButtonsWith({currentAmount: 10});
 
         const addButton = screen.getByRole('button', {
             name: 'button-add'
@@ -25,9 +44,10 @@ describe("CardButtons", () => {
 
         expect(addButton).toBeInTheDocument();
         expect(removeButton).toBeInTheDocument();
+
         expect(currentAmount).toHaveTextContent(/10/i);
     });
-    it('increment current amount when clicks on add button', async () => {
+    it('call addProduct when clicks on add button', async () => {
         renderButtonsWith();
 
         const addButton = screen.getByRole('button', {
@@ -36,29 +56,10 @@ describe("CardButtons", () => {
 
         await userEvent.click(addButton);
 
-        const currentAmount = screen.getByTestId('current-amount');
-
-        await waitFor(() => expect(currentAmount).toHaveTextContent(/1/i));
+        await waitFor(() => expect(defaultProps.addProduct).toHaveBeenCalled());
     })
-    it('dont increment current amount when clicks on add button and current is equal to available', async () => {
-        renderButtonsWith({selectedAmount: 10, availableAmount: 11});
-
-        const addButton = screen.getByRole('button', {
-            name: 'button-add'
-        });
-
-        await userEvent.click(addButton);
-
-        const currentAmount = screen.getByTestId('current-amount');
-
-        await waitFor(() => expect(currentAmount).toHaveTextContent(/11/i));
-
-        await userEvent.click(addButton);
-
-        await waitFor(() => expect(currentAmount).not.toHaveTextContent(/12/i));
-    })
-    it('decrement current amount when clicks on rmv button', async () => {
-        renderButtonsWith({selectedAmount: 2});
+    it('call rmvProduct when clicks on rmv button', async () => {
+        renderButtonsWith({currentAmount: 2});
 
         const rmvButton = screen.getByRole('button', {
             name: 'button-rmv'
@@ -66,26 +67,6 @@ describe("CardButtons", () => {
 
         await userEvent.click(rmvButton);
 
-        const currentAmount = screen.getByTestId('current-amount');
-
-        await waitFor(() => expect(currentAmount).toHaveTextContent(/1/i));
+        await waitFor(() => expect(defaultProps.rmvProduct).toHaveBeenCalled());
     })
-    it('decrement current amount when clicks on rmv button and dismount button when amount is equal 0',
-        async () => {
-            renderButtonsWith({selectedAmount: 2});
-
-            const rmvButton = screen.getByRole('button', {
-                name: 'button-rmv'
-            });
-
-            await userEvent.click(rmvButton);
-
-            const currentAmount = screen.getByTestId('current-amount');
-
-            await waitFor(() => expect(currentAmount).toHaveTextContent(/1/i));
-
-            await userEvent.click(rmvButton);
-
-            await waitFor(() => expect(currentAmount).not.toBeInTheDocument());
-        })
 })

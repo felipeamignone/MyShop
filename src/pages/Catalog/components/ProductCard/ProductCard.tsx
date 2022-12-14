@@ -28,8 +28,6 @@ const ProductCard = ({product}: Props) => {
 
     const currentProductInCart = state.products.find(productInCart => productInCart.id === product.id);
 
-    console.log({currentProductInCart})
-
     return (
         <Grid container justifyContent="center">
             <CardPaper elevation={3}>

@@ -28,7 +28,7 @@ export interface ICartState {
     };
     address: {
         streetName: string;
-        residenceNumber: string; //here is string because 00-A / 00-B cases...
+        residenceNumber: number | null;
         residenceComplement: string;
         city: string;
         uf: string;
