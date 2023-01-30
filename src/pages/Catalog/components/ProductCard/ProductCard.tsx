@@ -6,15 +6,11 @@ import Typography from "@mui/material/Typography";
 
 import { useCartContext } from "../../../../contexts/cart/context";
 import { useCatalogContext } from "../../../../contexts/catalog/context";
+import { formatPriceToLocaleString } from "../../../../utils";
 
 interface Props {
     product: IProduct
 }
-
-const formatPriceToLocaleString = (price: number) => price.toLocaleString('pt-br', {
-    style: 'currency',
-    currency: 'BRL'
-})
 
 const ProductCard = ({ product }: Props) => {
     const { state, addProduct, rmvProduct } = useCartContext();
