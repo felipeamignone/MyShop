@@ -14,7 +14,7 @@ const Header = () => (
                         </StyledLink>
                     </Grid>
                     <Grid item>
-                        <Typography variant="h4">My Shop</Typography>
+                        <Typography variant="h4">My Shop2</Typography>
                     </Grid>
                 </Grid>
                 <Grid item>
